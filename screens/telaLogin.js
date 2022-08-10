@@ -3,17 +3,31 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Button, Icon, Input } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { BottomNavigation } from 'react-native-paper';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Cadastro from './telaCadastro';
 
 
-
-
-
-export default function App(){
+export default function Login({navigation}){
     const [Email, setEmail] = useState(null)
     const [Senha, setSenha] = useState(null)
     const entrar = () => {
-    }
 
+        navigation.reset({
+            index: 0,
+            routes: [{name: "Principal"}]
+        })
+
+    }
+    const entrarCadastro = () => {
+
+        navigation.reset({
+            index: 0,
+            routes: [{name: "Cadastro"}]
+        })
+
+        
+    }
 
     return(
        <View style={styles.container}>
@@ -29,14 +43,14 @@ export default function App(){
 
 
 
-           <Input
+           <Input style={styles.inputStyle}
             placeholder="Email"
             onChangeText= {value => setEmail(value)}
             keyboardType='email-address'
             leftIcon={{ type: 'font-awesome', name: 'envelope', color: 'gray'}}
            />
 
-            <Input
+            <Input style={styles.inputStyle}
             placeholder="Senha"
             onChangeText= {value => setSenha(value)}
             leftIcon={{ type: 'font-awesome', name: 'lock', color: 'gray', }}
@@ -46,6 +60,11 @@ export default function App(){
            <Button title={"Entrar"} type="outline"
            
            onPress={() => entrar()}
+          
+           />
+            <Button title={"Cadastrar"} type="outline"
+           
+           onPress={() => entrarCadastro()}
            />
            
 
@@ -53,7 +72,7 @@ export default function App(){
        </View>
 
     );
-  }
+}
 
   
     
@@ -74,5 +93,9 @@ const styles = StyleSheet.create({
         color: 'gray'
         
     },
+    inputStyle: {
+        color: 'gray'
+    },
+
 
 })
