@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button, Input, } from 'react-native-elements';
+import { Button, Icon, Input } from 'react-native-elements';
+import { color } from 'react-native-elements/dist/helpers';
 
 
 
@@ -9,7 +10,10 @@ import { Button, Input, } from 'react-native-elements';
 
 export default function App(){
     const [Email, setEmail] = useState(null)
-const [Senha, setSenha] = useState(null) 
+    const [Senha, setSenha] = useState(null)
+    const entrar = () => {
+    }
+
 
     return(
        <View style={styles.container}>
@@ -17,7 +21,7 @@ const [Senha, setSenha] = useState(null)
 
 
 
-           <Text style={styles.label}> LOGIN
+           <Text style={styles.label}> Login
 
 
 
@@ -29,15 +33,23 @@ const [Senha, setSenha] = useState(null)
             placeholder="Email"
             onChangeText= {value => setEmail(value)}
             keyboardType='email-address'
-            leftIcon={{ type: 'font-awesome', name: 'envelope'}}
+            leftIcon={{ type: 'font-awesome', name: 'envelope', color: 'gray'}}
            />
 
             <Input
             placeholder="Senha"
             onChangeText= {value => setSenha(value)}
-            leftIcon={{ type: 'font-awesome', name: 'lock'}}
+            leftIcon={{ type: 'font-awesome', name: 'lock', color: 'gray', }}
             secureTextEntry={true}
            />
+
+           <Button title={"Entrar"} type="outline"
+           
+           onPress={() => entrar()}
+           />
+           
+          
+
 
 
 
@@ -52,19 +64,19 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#ccc',
+        backgroundColor: '#1C1C1C',
         alignItems: 'center',
-        justifyContent: 'center',
-    
-
-
+        justifyContent: 'Top',
+        
     },
     label: {
 
-        alignItems: 'baseline',
-        backgroundColor: 'yellow'
+        alignItems: 'center',
+        fontSize: 50,
+        marginVertical: 100,
+        color: 'gray'
         
-    }
+    },
 
 })
 
