@@ -39,19 +39,28 @@ export default function Cadastro({navigation}) {
             placeholder="Email"
             onChangeText= {value => setEmail(value)}
             keyboardType='email-address'
+            textContentType='emailAddress'
            
            />
         <Input style={styles.inputStyle}
             placeholder="Nome"
             onChangeText= {value => setEmail(value)}
             keyboardType='default'
+            textContentType='name'
+          
+           />
+           <Input style={styles.inputStyle}
+            placeholder="CPF"
+            onChangeText= {value => setCPF(value)}
+            keyboardType='numbers-and-punctuation'
+           
           
            />
                    <Input style={styles.inputStyle}
             placeholder="Telefone"
             onChangeText= {value => setEmail(value)}
-            keyboardType='numeric'
-            textContentType="telephoneNumber"
+            keyboardType='numeric'  
+            textContentType="telephoneNumber" 
 
           
            />

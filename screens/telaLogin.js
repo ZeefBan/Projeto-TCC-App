@@ -20,7 +20,7 @@ export default function Login({navigation}){
 
     }
     const entrarCadastro = () => {
-
+ 
         navigation.reset({
             index: 0,
             routes: [{name: "Cadastro"}]
@@ -57,12 +57,18 @@ export default function Login({navigation}){
             secureTextEntry={true}
            />
 
-           <Button title={"Entrar"} type="outline"
+           <Button 
+           style={styles.buttonStyle}
+           title={"Entrar"} 
+           type="outline"
            
            onPress={() => entrar()}
           
            />
-            <Button title={"Cadastrar"} type="outline"
+            <Button
+             style={styles.buttonStyle}
+             title={"Cadastrar"}
+              type="outline"
            
            onPress={() => entrarCadastro()}
            />
@@ -89,12 +95,22 @@ const styles = StyleSheet.create({
 
         alignItems: 'center',
         fontSize: 50,
-        marginVertical: 100,
+        marginVertical: 125,
         color: 'gray'
         
     },
     inputStyle: {
-        color: 'gray'
+        color: 'gray',
+        marginVertical: '15px'
+    },
+    buttonStyle: {
+
+        marginTop: '15px',
+        width: '200px'
+        
+        
+
+
     },
 
 
