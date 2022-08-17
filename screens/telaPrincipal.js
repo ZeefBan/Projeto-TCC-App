@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Button, Icon, Input } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
-import { BottomNavigation } from 'react-native-paper';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 export default function Principal () {
@@ -12,6 +13,7 @@ export default function Principal () {
 
             <Text>
 
+            <h4>Principal</h4>
 
             </Text>
 

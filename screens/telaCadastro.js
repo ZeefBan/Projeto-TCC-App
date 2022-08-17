@@ -17,6 +17,14 @@ export default function Cadastro({navigation}) {
   const [Telefone, setTelefone] = useState(null)
   const [Senha, setSenha] = useState(null)
 
+  const voltar = () => {
+
+    navigation.reset({
+      index: 0,
+      routes: [{name: "Login"}]
+  })
+
+  }
 
 
   return (

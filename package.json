@@ -10,8 +10,9 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.14.1",
     "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/bottom-tabs": "^5.11.2",
+    "@react-navigation/bottom-tabs": "^5.11.15",
     "@react-navigation/native": "^5.9.8",
+    "@react-navigation/native-stack": "^6.7.0",
     "@react-navigation/stack": "^5.14.9",
     "axios": "^0.21.1",
     "expo": "~39.0.2",
