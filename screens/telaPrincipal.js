@@ -40,7 +40,7 @@ export default function Principal() {
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name=""
         component={Perfil}
         options={{
           tabBarLabel: 'Profile',
@@ -59,6 +59,7 @@ export default function Principal() {
           ),
         }}
       />
+      
       
     </Tab.Navigator>
   );

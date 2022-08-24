@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import { Platform } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image} from 'react-native';
 import { Button, CheckBox, Input, Text } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button as PaperButton, Provider, Dialog, Paragraph, Portal} from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 
 export default function Cadastro({navigation}) {
   const [Email, setEmail] = useState(null)
@@ -29,60 +30,59 @@ export default function Cadastro({navigation}) {
   return (
 
     <View style={styles.specificContainer}>
+           <Image style={{width:150,height:50}} source={require('../assets/LOGOEmpresaV2CorteImagem.png')}/>
 
-
-      <Text>
-
-      </Text>
       <Input style={styles.inputStyle}
             placeholder="Email"
             onChangeText= {value => setEmail(value)}
             keyboardType='email-address'
             textContentType='emailAddress'
-            leftIcon={{ type: 'MaterialCommunityIcons', name: 'email', color: 'gray', }}
-
+            
            />
         <Input style={styles.inputStyle}
             placeholder="Nome"
-            onChangeText= {value => setEmail(value)}
+            onChangeText= {value => setNome(value)}
             keyboardType='default'
             textContentType='name'
-            leftIcon={{ type: 'MaterialCommunityIcons', name: 'rename-box', color: 'gray', }}
 
            />
            <Input style={styles.inputStyle}
             placeholder="CPF"
             onChangeText= {value => setCPF(value)}
             keyboardType='numbers-and-punctuation'
-            leftIcon={{ type: 'MaterialCommunityIcons', name: 'user-plus', color: 'gray', }}
 
           
            />
                    <Input style={styles.inputStyle}
             placeholder="Telefone"
-            onChangeText= {value => setEmail(value)}
+            onChangeText= {value => setTelefone(value)}
             keyboardType='numeric'  
             textContentType="telephoneNumber" 
-            leftIcon={{ type: 'MaterialCommunityIcons', name: 'card-account-phone', color: 'gray', }}
-
-          
-           />
+            
+             
+            
+            />
+            
+           
 
 
             <Input style={styles.inputStyle}
             placeholder="Senha"
             onChangeText= {value => setSenha(value)}
             secureTextEntry={true}
-            leftIcon={{ type: 'MaterialCommunityIcons', name: 'account-lock', color: 'gray', }}
 
            />
 
-           <Button title={"Cadastrar"} type="outline"
+           <Button
+           
+           title={"Cadastrar"} type="outline"
            
            onPress={() => inserir()}
           
            />
-            <Button title={"Voltar"} type="outline"
+            <Button 
+            
+           title={"Voltar"} type="outline"
            
            onPress={() => voltar()}
            />
@@ -97,11 +97,22 @@ export default function Cadastro({navigation}) {
   }
 const styles = StyleSheet.create({
   specificContainer: {
-    backgroundColor: "#ff",
-    padding: 10,
+    backgroundColor: "#1C1C1C",
+    padding: 20,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+
   },
   button: {
     width: "100%",
     marginTop: 10
-  }
+  }, 
+  Input: {
+    width:'100%',
+    height:40,
+    backgroundColor:'white',
+    borderRadius:20,
+    paddingLeft:10,
+  },
 })
