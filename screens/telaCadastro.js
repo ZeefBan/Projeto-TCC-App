@@ -7,8 +7,7 @@ import { Button, CheckBox, Input, Text } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button as PaperButton, Provider, Dialog, Paragraph, Portal} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function Cadastro({navigation}) {
   const [Email, setEmail] = useState(null)
@@ -40,20 +39,23 @@ export default function Cadastro({navigation}) {
             onChangeText= {value => setEmail(value)}
             keyboardType='email-address'
             textContentType='emailAddress'
-           
+            leftIcon={{ type: 'MaterialCommunityIcons', name: 'email', color: 'gray', }}
+
            />
         <Input style={styles.inputStyle}
             placeholder="Nome"
             onChangeText= {value => setEmail(value)}
             keyboardType='default'
             textContentType='name'
-          
+            leftIcon={{ type: 'MaterialCommunityIcons', name: 'rename-box', color: 'gray', }}
+
            />
            <Input style={styles.inputStyle}
             placeholder="CPF"
             onChangeText= {value => setCPF(value)}
             keyboardType='numbers-and-punctuation'
-           
+            leftIcon={{ type: 'MaterialCommunityIcons', name: 'user-plus', color: 'gray', }}
+
           
            />
                    <Input style={styles.inputStyle}
@@ -61,6 +63,7 @@ export default function Cadastro({navigation}) {
             onChangeText= {value => setEmail(value)}
             keyboardType='numeric'  
             textContentType="telephoneNumber" 
+            leftIcon={{ type: 'MaterialCommunityIcons', name: 'card-account-phone', color: 'gray', }}
 
           
            />
@@ -70,6 +73,8 @@ export default function Cadastro({navigation}) {
             placeholder="Senha"
             onChangeText= {value => setSenha(value)}
             secureTextEntry={true}
+            leftIcon={{ type: 'MaterialCommunityIcons', name: 'account-lock', color: 'gray', }}
+
            />
 
            <Button title={"Cadastrar"} type="outline"

@@ -3,49 +3,31 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import MapView from 'react-native-maps';
+import Feed from './Pages/TelaFeed';
+import Notifications from './Pages/TelaNotification';
+import Perfil from './Pages/TelaPerfil';
 
 
-function Feed() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <MapView
-    initialRegion={{
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-        }}
-      />
-    </View>
-  );
-}
-
-function Profile() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile!</Text>
-    </View>
-  );
-}
-
-function Notifications() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Notifications!</Text>
-    </View>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 
 export default function Principal() {
   return (
     <Tab.Navigator
+       tabBarOptions={{
+        style:{
+          backgroundColor:"#1C1C1C",
+          borderTopColor: "transparent"
+        },
+        activeTintColor: "#32CD32",
+        tabStyle:{
+          paddingBottom: 5,
+          paddingTop: 5,
+        }
+       }}
+
       initialRouteName="Feed"
-      screenOptions={{
-        tabBarActiveTintColor: '#e91e63',
-      }}
+      
     >
       <Tab.Screen
         name="Feed"
@@ -58,18 +40,8 @@ export default function Principal() {
         }}
       />
       <Tab.Screen
-        name="Notifications"
-        component={Notifications}
-        options={{
-          tabBarLabel: 'Updates',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={Perfil}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color, size }) => (
@@ -77,6 +49,17 @@ export default function Principal() {
           ),
         }}
       />
+      <Tab.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{
+          tabBarLabel: 'Notifications',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="bell" color={color} size={size} />
+          ),
+        }}
+      />
+      
     </Tab.Navigator>
   );
 }
