@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const UsersTable = queryInterface.createTable("das_usuarios", {
+    const UsersTable = queryInterface.createTable("dados_usuarios", {
 
       Nome:{
         type: Sequelize.STRING,

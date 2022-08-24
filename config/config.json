@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "epiz_32273094",
-    "password": "joFqXR1nFUrE8Ee",
-    "database": "epiz_32273094_trafficfunction_database",
-    "host": "sql308.epizy.com",
+    "username": "root",
+    "password": "",
+    "database": "test",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
