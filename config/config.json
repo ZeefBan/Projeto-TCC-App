@@ -1,10 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "epiz_32273094",
+    "password": "joFqXR1nFUrE8Ee",
+    "database": "epiz_32273094_trafficfunction_database",
+    "host": "sql308.epizy.com",
     "dialect": "mysql"
   }
-  
 }
