@@ -30,30 +30,30 @@ export default function Principal() {
       
     >
       <Tab.Screen
-        name="Feed"
+        name="Início"
         component={Feed}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Início',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name=""
+        name="Perfil"
         component={Perfil}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: 'Perfil',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="Notifications"
+        name="Notificações"
         component={Notifications}
         options={{
-          tabBarLabel: 'Notifications',
+          tabBarLabel: 'Notificações',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bell" color={color} size={size} />
           ),
