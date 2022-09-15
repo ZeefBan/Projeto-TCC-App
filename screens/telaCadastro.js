@@ -30,7 +30,8 @@ export default function Cadastro({navigation}) {
   return (
 
     <View style={styles.specificContainer}>
-           <Image style={{width:150,height:50}} source={require('../assets/LOGOEmpresaV2CorteImagem.png')}/>
+          
+      <Image style={styles.imageStyle} source={require('../assets/LogoTF.png')}/>
 
       <Input style={styles.inputStyle}
             placeholder="Email"
@@ -75,13 +76,17 @@ export default function Cadastro({navigation}) {
 
            <Button
            
+           style={styles.buttonStyle}
+
            title={"Cadastrar"} type="outline"
            
            onPress={() => inserir()}
           
            />
             <Button 
-            
+
+           style={styles.buttonStyle}
+
            title={"Voltar"} type="outline"
            
            onPress={() => voltar()}
@@ -104,15 +109,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
 
   },
-  button: {
-    width: "100%",
-    marginTop: 10
+  buttonStyle: {
+    width: '200px',
+    marginTop: '15px',
+
   }, 
-  Input: {
+  inputStyle: {
     width:'100%',
     height:40,
     backgroundColor:'white',
     borderRadius:20,
     paddingLeft:10,
   },
+
+  imageStyle: {
+   justifyContent: 'center',
+   alignItems: 'center',
+   width: '150px',
+   height: '150px',
+   borderRadius: 20,
+
+
+  },
+
 })

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
 import { Button, Icon, Input } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { BottomNavigation } from 'react-native-paper';
@@ -30,19 +30,14 @@ export default function Login({navigation}){
     }
 
     return(
+        
        <View style={styles.container}>
-
-
 
 
            <Text style={styles.label}> Login
 
-
-
            </Text>
-
-
-
+           
            <Input style={styles.inputStyle}
             placeholder="Email"
             onChangeText= {value => setEmail(value)}
@@ -76,6 +71,7 @@ export default function Login({navigation}){
 
 
        </View>
+       
 
     );
 }
@@ -108,9 +104,6 @@ const styles = StyleSheet.create({
         marginTop: '15px',
         width: '200px'
         
-        
-
-
     },
 
 
