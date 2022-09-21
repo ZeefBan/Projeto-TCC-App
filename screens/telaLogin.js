@@ -98,12 +98,22 @@ export default function Login({navigation}){
 
            <Text style={styles.textStyle}> Acessar </Text>
            
+<<<<<<< HEAD
            </TouchableOpacity>
 
             <TouchableOpacity style={styles.registerStyle}
             onPress={() =>Cadastro()}>
 
              <Text style={styles.registerText} > Criar conta Gratuita </Text>
+=======
+           onPress={() => entrar()} 
+          
+           />
+            <Button
+             style={styles.buttonStyle}
+             title={"Cadastrar"}
+              type="outline"
+>>>>>>> 7817901a718b4aa5c28fe6b33f61ecedab099468
            
            </TouchableOpacity>
            
