@@ -57,7 +57,7 @@ export default function Login({navigation}){
            title={"Entrar"} 
            type="outline"
            
-           onPress={() => entrar()}
+           onPress={() => entrar()} 
           
            />
             <Button
