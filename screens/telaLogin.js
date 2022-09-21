@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
-import { Button, Icon, Input } from 'react-native-elements';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, KeyboardAvoidingView, TouchableOpacity, Animated } from 'react-native';
+import { Button, Icon, Input, Image } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { BottomNavigation } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -11,7 +11,7 @@ import Cadastro from './telaCadastro';
 export default function Login({navigation}){
     const [Email, setEmail] = useState(null)
     const [Senha, setSenha] = useState(null)
-    const entrar = () => {
+    const Acessar = () => {
 
         navigation.reset({
             index: 0,
@@ -19,7 +19,7 @@ export default function Login({navigation}){
         })
 
     }
-    const entrarCadastro = () => {
+    const Cadastro = () => {
  
         navigation.reset({
             index: 0,
@@ -29,50 +29,89 @@ export default function Login({navigation}){
         
     }
 
+    const [offSet] = useState(new Animated.ValueXY({x: 0, y: 95}));
+    const [opacity] = useState(new Animated.Value(0));
+
+    useEffect(() => {
+
+        Animated.parallel([
+            Animated.spring(offSet.y, {
+                toValue: 0,
+                speed: 4,
+                bounciness: 30,
+            }),
+         Animated.timing(opacity,{
+          toValue: 1,
+          duration: 300,
+
+
+
+         })
+
+        ]).start();
+
+        
+},[]);
+
+    
+
+
     return(
         
-       <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.background}>
+
+       <View style={styles.containerLogo}>
 
 
-           <Text style={styles.label}> Login
+           <Image style={styles.imageStyle}
+             source={require('..//assets/LogoTF.png')}
 
-           </Text>
-           
+
+           />
+        </View>
+
+           <Animated.View style={[styles.container, {
+             opacity: opacity,  
+             transform: [
+                {translateY: offSet.y }
+             ]
+            
+           }]}>
+
+        
            <Input style={styles.inputStyle}
             placeholder="Email"
+            autoCorrect={false}
             onChangeText= {value => setEmail(value)}
             keyboardType='email-address'
-            leftIcon={{ type: 'font-awesome', name: 'envelope', color: 'gray'}}
            />
 
             <Input style={styles.inputStyle}
             placeholder="Senha"
+            autoCorrect={false}
             onChangeText= {value => setSenha(value)}
-            leftIcon={{ type: 'font-awesome', name: 'lock', color: 'gray', }}
             secureTextEntry={true}
            />
 
-           <Button 
-           style={styles.buttonStyle}
-           title={"Entrar"} 
-           type="outline"
+           <TouchableOpacity style={styles.buttonStyle}
+           onPress={() =>Acessar()}>
+
+           <Text style={styles.textStyle}> Acessar </Text>
            
-           onPress={() => entrar()}
-          
-           />
-            <Button
-             style={styles.buttonStyle}
-             title={"Cadastrar"}
-              type="outline"
+           </TouchableOpacity>
+
+            <TouchableOpacity style={styles.registerStyle}
+            onPress={() =>Cadastro()}>
+
+             <Text style={styles.registerText} > Criar conta Gratuita </Text>
            
-           onPress={() => entrarCadastro()}
-           />
+           </TouchableOpacity>
            
 
 
-       </View>
+       </Animated.View>
        
-
+       </KeyboardAvoidingView>
     );
 }
 
@@ -80,31 +119,74 @@ export default function Login({navigation}){
     
 const styles = StyleSheet.create({
 
+   background:{
+    flex:1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#191919',
+
+   },
+
+
+    containerLogo: {
+        flex: 1,
+        justifyContent: 'center',
+        
+    },
+
     container: {
         flex: 1,
-        backgroundColor: '#1C1C1C',
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyContent: 'Top',
-        
+        width: '90%',
+        paddingBottom: 50,
     },
-    label: {
 
-        alignItems: 'center',
-        fontSize: 50,
-        marginVertical: 125,
-        color: 'gray'
-        
-    },
     inputStyle: {
-        color: 'gray',
-        marginVertical: '15px'
+        backgroundColor: '#FFF',
+        color: '#222',
+        width: '90%',
+        marginBottom:15,
+        fontSize: 17,
+        borderRadius: 7,
+        padding: 10,
     },
     buttonStyle: {
 
-        marginTop: '15px',
-        width: '200px'
-        
+        backgroundColor: '#35AAFF',
+        width: '90%',
+        height: 45,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
+
+    textStyle: {
+      color: '#FFF',
+      fontSize: 18,
+
+    },
+
+    registerStyle: {
+     marginTop: 10,
+     
+
+    },
+     
+    registerText: {
+     color: '#FFF',
+
+    },
+    
+
+    imageStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '150px',
+        height: '160px',
+        borderRadius: 20,
+        
+     
+       },
 
 
 })

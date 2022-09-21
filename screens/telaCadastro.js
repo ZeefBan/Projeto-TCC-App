@@ -16,6 +16,19 @@ export default function Cadastro({navigation}) {
   const [Nome, setNome] = useState(null)
   const [Telefone, setTelefone] = useState(null)
   const [Senha, setSenha] = useState(null)
+  const [isSelected, setSelected] = useState(false)
+
+  const inserir = () => {
+
+    alert(Senha);
+    alert(Telefone);
+    alert(Nome);
+    alert(CPF);
+    alert(Email);
+  }
+
+
+
 
   const voltar = () => {
 
@@ -31,8 +44,11 @@ export default function Cadastro({navigation}) {
 
     <View style={styles.specificContainer}>
           
-      <Image style={styles.imageStyle} source={require('../assets/LogoTF.png')}/>
-
+      <Image style={styles.imageStyle} source={require('../assets/LOGOEmpresaV2CorteImagem.png')}/>
+      
+       <br>
+    
+      </br>
       <Input style={styles.inputStyle}
             placeholder="Email"
             onChangeText= {value => setEmail(value)}
@@ -74,6 +90,18 @@ export default function Cadastro({navigation}) {
 
            />
 
+           <CheckBox 
+           title="Eu Aceito os Termos De Uso"
+           checkedIcon="check"
+           uncheckedIcon="square-o"
+           checkedColor="green"
+           uncheckedColor="gray"
+           checked={isSelected}
+           onPress={() => setSelected(!isSelected)}
+           />
+
+
+
            <Button
            
            style={styles.buttonStyle}
@@ -91,7 +119,7 @@ export default function Cadastro({navigation}) {
            
            onPress={() => voltar()}
            />
-
+      
 
 
 
@@ -107,12 +135,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-
+    
   },
   buttonStyle: {
     width: '200px',
     marginTop: '15px',
-
+    
   }, 
   inputStyle: {
     width:'100%',
@@ -120,15 +148,16 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     borderRadius:20,
     paddingLeft:10,
+    marginBottom:10,
   },
 
   imageStyle: {
    justifyContent: 'center',
    alignItems: 'center',
-   width: '150px',
-   height: '150px',
-   borderRadius: 20,
-
+   width: '260px',
+   height: '25px',
+ 
+   
 
   },
 
