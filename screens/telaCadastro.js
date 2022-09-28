@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Alert } from 'react-native';
 import { Platform } from 'react-native';
-import { KeyboardAvoidingView } from 'react-native';
-import { StyleSheet, View, Image} from 'react-native';
-import { Button, CheckBox, Input, Text } from 'react-native-elements';
-import { ScrollView } from 'react-native-gesture-handler';
-import { TextInputMask } from 'react-native-masked-text';
-import { Button as PaperButton, Provider, Dialog, Paragraph, Portal} from 'react-native-paper';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Button, CheckBox, Input, Image } from 'react-native-elements';
+import { StyleSheet, View, Text, KeyboardAvoidingView, TouchableOpacity, Animated } from 'react-native';
+import { color } from 'react-native-elements/dist/helpers';
+import { BottomNavigation } from 'react-native-paper';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import inserir from './telaPrincipal';
 
 
 export default function Cadastro({navigation}) {
@@ -16,15 +16,16 @@ export default function Cadastro({navigation}) {
   const [Nome, setNome] = useState(null)
   const [Telefone, setTelefone] = useState(null)
   const [Senha, setSenha] = useState(null)
-  const [isSelected, setSelected] = useState(false)
+ 
 
   const inserir = () => {
 
-    alert(Senha);
-    alert(Telefone);
-    alert(Nome);
-    alert(CPF);
-    alert(Email);
+    navigation.reset({
+      index: 0,
+      routes: [{name: "Principal"},]
+  })
+
+
   }
 
 
@@ -39,126 +40,188 @@ export default function Cadastro({navigation}) {
 
   }
 
+  const [offSet] = useState(new Animated.ValueXY({x: 0, y: 95}));
+    const [opacity] = useState(new Animated.Value(0));
 
-  return (
+    useEffect(() => {
 
-    <View style={styles.specificContainer}>
-          
-      <Image style={styles.imageStyle} source={require('../assets/LOGOEmpresaV2CorteImagem.png')}/>
+        Animated.parallel([
+            Animated.spring(offSet.y, {
+                toValue: 0,
+                speed: 4,
+                bounciness: 30,
+            }),
+         Animated.timing(opacity,{
+          toValue: 1,
+          duration: 300,
+
+
+
+         })
+
+        ]).start();
+
+        
+},[]);
+
+return(
+        
+  <KeyboardAvoidingView style={styles.background}>
+
+ <View style={styles.containerLogo}>
+
+
+     <Image style={styles.imageStyle}
+       source={require('..//assets/LogoTF.png')}
+
+
+     />
+  </View>
+
+     <Animated.View style={[styles.container, {
+       opacity: opacity,  
+       transform: [
+          {translateY: offSet.y }
+       ]
       
-       <br>
-    
-      </br>
-      <Input style={styles.inputStyle}
-            placeholder="Email"
-            onChangeText= {value => setEmail(value)}
-            keyboardType='email-address'
-            textContentType='emailAddress'
-            
-           />
-        <Input style={styles.inputStyle}
+     }]}>
+
+  
+     <Input style={styles.inputStyle}
+      placeholder="Email"
+      autoCorrect={false}
+      onChangeText= {value => setEmail(value)}
+      keyboardType='email-address'
+     />
+     <Input style={styles.inputStyle}
             placeholder="Nome"
             onChangeText= {value => setNome(value)}
             keyboardType='default'
             textContentType='name'
 
-           />
-           <Input style={styles.inputStyle}
+     />
+     <Input style={styles.inputStyle}
             placeholder="CPF"
             onChangeText= {value => setCPF(value)}
             keyboardType='numbers-and-punctuation'
 
           
-           />
-                   <Input style={styles.inputStyle}
+     />
+     <Input style={styles.inputStyle}
             placeholder="Telefone"
             onChangeText= {value => setTelefone(value)}
             keyboardType='numeric'  
-            textContentType="telephoneNumber" 
-            
-             
-            
-            />
-            
-           
+            textContentType="telephoneNumber"        
+     />
 
 
-            <Input style={styles.inputStyle}
-            placeholder="Senha"
-            onChangeText= {value => setSenha(value)}
-            secureTextEntry={true}
-
-           />
-
-           <CheckBox 
-           title="Eu Aceito os Termos De Uso"
-           checkedIcon="check"
-           uncheckedIcon="square-o"
-           checkedColor="green"
-           uncheckedColor="gray"
-           checked={isSelected}
-           onPress={() => setSelected(!isSelected)}
-           />
+      <Input style={styles.inputStyle}
+      placeholder="Senha"
+      autoCorrect={false}
+      onChangeText= {value => setSenha(value)}
+      secureTextEntry={true}
+     />
 
 
+     <TouchableOpacity style={styles.registerStyle}
+     onPress={() =>inserir()}>
 
-           <Button
-           
-           style={styles.buttonStyle}
+     <Text style={styles.registerText}> inserir </Text>
+     
 
-           title={"Cadastrar"} type="outline"
-           
-           onPress={() => inserir()}
-          
-           />
-            <Button 
+     </TouchableOpacity>
 
-           style={styles.buttonStyle}
+      <TouchableOpacity style={styles.buttonStyle}
+      onPress={() =>voltar()}>
 
-           title={"Voltar"} type="outline"
-           
-           onPress={() => voltar()}
-           />
-      
+       <Text style={styles.textStyle} > Voltar </Text>
+
+     
+     </TouchableOpacity>
+     
 
 
-
-    </View>
-  )
-
+ </Animated.View>
  
-  }
+ </KeyboardAvoidingView>
+);
+}
+
+
+
 const styles = StyleSheet.create({
-  specificContainer: {
-    backgroundColor: "#1C1C1C",
-    padding: 20,
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    
-  },
-  buttonStyle: {
-    width: '200px',
-    marginTop: '15px',
-    
-  }, 
-  inputStyle: {
-    width:'100%',
-    height:40,
-    backgroundColor:'white',
-    borderRadius:20,
-    paddingLeft:10,
-    marginBottom:10,
-  },
 
-  imageStyle: {
-   justifyContent: 'center',
-   alignItems: 'center',
-   width: '260px',
-   height: '25px',
- 
-   
+background:{
+flex:1,
+alignItems: 'center',
+justifyContent: 'center',
+backgroundColor: '#191919',
 
-  },
+},
+
+
+containerLogo: {
+  flex: 1,
+  justifyContent: 'center',
+  
+},
+
+container: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '90%',
+  paddingBottom: 50,
+},
+
+inputStyle: {
+  backgroundColor: '#FFF',
+  color: '#222',
+  width: '90%',
+  marginBottom:15,
+  fontSize: 17,
+  borderRadius: 7,
+  padding: 10,
+},
+buttonStyle: {
+  marginBottom: 15,
+  backgroundColor: '#35AAFF',
+  width: '90%',
+  height: 45,
+  alignItems: 'center',
+  justifyContent: 'center',
+},
+
+textStyle: {
+color: '#FFF',
+fontSize: 18,
+
+},
+
+registerStyle: {
+  backgroundColor: '#35AAFF',
+  width: '90%',
+  height: 45,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: 17,
+},
+
+registerText: {
+color: '#FFF',
+fontSize: 18,
+},
+
+
+imageStyle: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '150px',
+  height: '160px',
+  borderRadius: 20,
+  
+
+ },
+
 
 })

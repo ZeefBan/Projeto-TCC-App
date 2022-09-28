@@ -25,7 +25,7 @@ export default function Feed() {
       
 
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
+        bootstrapURLKeys={{ key: "AIzaSyChXtivk2pUDvJ8t54pRI9EylMM0-Vde70" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         yesIWantToUseGoogleMapApiInternals = "true"
