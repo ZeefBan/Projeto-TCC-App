@@ -19,7 +19,7 @@ export default function Principal() {
           backgroundColor:"#1C1C1C",
           borderTopColor: "transparent"
         },
-        activeTintColor: "#32CD32",
+        activeTintColor: "#35AAFF",
         tabStyle:{
           paddingBottom: 5,
           paddingTop: 5,
@@ -49,16 +49,7 @@ export default function Principal() {
           ),
         }}
       />
-      <Tab.Screen
-        name="Notificações"
-        component={Notifications}
-        options={{
-          tabBarLabel: 'Notificações',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={size} />
-          ),
-        }}
-      />
+      
       
       
     </Tab.Navigator>

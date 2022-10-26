@@ -3,6 +3,7 @@ import {View, Text, StyleSheet} from "react-native";
 import styles from "../../style/mainStyles";
 import GoogleMapReact from 'google-map-react';
 
+
 const  AnyReactComponent  =  ( { text } )  =>  <div> { text } </div> ;
 
 export default function Feed() {
@@ -20,25 +21,19 @@ export default function Feed() {
 
     return(
 
-      
-      <div  style = { {  height : '100vh' ,  width : '100%'  } } > 
-      
-
+      <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyChXtivk2pUDvJ8t54pRI9EylMM0-Vde70" }}
+        bootstrapURLKeys={{ key: "AIzaSyBikaZe_qA1hq-wSEZdkcoMme8T9sXqfvg" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
-        yesIWantToUseGoogleMapApiInternals = "true"
-        onGoogleApiLoaded = { ( { map , maps } )  =>  handleApiLoaded ( map ,  maps ) } 
-      > 
-      
+      >
         <AnyReactComponent
           lat={59.955413}
           lng={30.337844}
           text="My Marker"
         />
       </GoogleMapReact>
-      </ div > 
-      
+    </div>
+
     );
 }

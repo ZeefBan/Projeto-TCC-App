@@ -1,12 +1,16 @@
 import React from "react";
-import {View, SafeAreaView, StyleSheet} from "react-native";
-import {Avatar, Title, Caption, Text, TouchableRipple} from 'react-native-paper';
+import {View, SafeAreaView, StyleSheet, TouchableOpacity} from "react-native";
+import {Avatar, Title, Caption, Text} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createStackNavigator } from '@react-navigation/stack';
 import Notifications from "./TelaNotification";
 
 
 const Perfil = () => {
     return(
+
+
+
       <SafeAreaView style={styles.container}>
         <View style={styles.userInfoSection}>
           <View style={{flexDirection: 'row', marginTop: 15 }}>
@@ -61,26 +65,30 @@ const Perfil = () => {
       </View>
 
       <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="heart-outline" color="#FF6347" size={25}/>
+    
+          <TouchableOpacity style={styles.menuItem}
+          onPress={() => {}}>
+            <Icon name="heart-outline" color="#35AAFF" size={25}/>
             <Text style={styles.menuItemText}>Notificaçoes</Text>
-          </View>
-        </TouchableRipple>
+          </TouchableOpacity>
+  
     
         
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="account-check-outline" color="#FF6347" size={25}/>
+         
+          <TouchableOpacity style={styles.menuItem}
+            onPress={() => {}}>
+            <Icon name="account-check-outline" color="#35AAFF" size={25}/>
             <Text style={styles.menuItemText}>Suporte</Text>
-          </View>
-        </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="settings-outline" color="#FF6347" size={25}/>
+          </TouchableOpacity>
+        
+         
+          <TouchableOpacity style={styles.menuItem}
+            onPress={() => {}}>
+            <Icon name="settings-outline" color="#35AAFF" size={25}/>
             <Text style={styles.menuItemText}>Configuraçoes</Text>
-          </View>
-        </TouchableRipple>
+            
+          </TouchableOpacity>
+        
       </View>
     </SafeAreaView>
   );
