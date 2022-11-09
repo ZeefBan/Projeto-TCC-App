@@ -4,8 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Feed from './Pages/TelaFeed';
-import Notifications from './Pages/TelaNotification';
 import Perfil from './Pages/TelaPerfil';
+import Notifications from './Pages/TelaNotification';
+import Configs from './Pages/TelaConfig';
+
 
 
 
@@ -13,6 +15,8 @@ const Tab = createBottomTabNavigator();
 
 export default function Principal() {
   return (
+    
+
     <Tab.Navigator
        tabBarOptions={{
         style:{
@@ -49,9 +53,29 @@ export default function Principal() {
           ),
         }}
       />
+      <Tab.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{
+          tabBarLabel: 'Notificaçoes',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Configs"
+        component={Configs}
+        options={{
+          tabBarLabel: 'Config',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
       
       
       
     </Tab.Navigator>
-  );
-}
+
+)}

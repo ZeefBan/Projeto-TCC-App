@@ -23,7 +23,7 @@ export default function Feed() {
 
       <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyBikaZe_qA1hq-wSEZdkcoMme8T9sXqfvg" }}
+        bootstrapURLKeys={{ key: "AIzaSyChXtivk2pUDvJ8t54pRI9EylMM0-Vde70" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >

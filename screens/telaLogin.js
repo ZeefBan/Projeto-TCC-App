@@ -38,7 +38,7 @@ export default function Login({navigation}){
             Animated.spring(offSet.y, {
                 toValue: 0,
                 speed: 4,
-                bounciness: 30,
+                bounciness: 20,
             }),
          Animated.timing(opacity,{
           toValue: 1,
