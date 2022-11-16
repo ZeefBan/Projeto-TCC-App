@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
       marginLeft: 15,
       color: "#f00",
       fontSize: 12
-    }
+    },
   });
 
   
