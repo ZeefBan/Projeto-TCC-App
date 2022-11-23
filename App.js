@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import Login from './screens/telaLogin';
 import Cadastrar from './screens/telaCadastro';
-import Principal from './screens/telaPrincipal';
+import Routes from './screens/telaRoutes';
 
 
 
@@ -27,8 +27,8 @@ function MyStack() {
       component={Cadastrar}/>
 
       <Stack.Screen 
-      name="Principal" 
-      component={Principal} />
+      name="Routes" 
+      component={Routes} />
     </Stack.Navigator>
 
     

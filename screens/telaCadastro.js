@@ -7,7 +7,6 @@ import { color } from 'react-native-elements/dist/helpers';
 import { BottomNavigation } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import inserir from './telaPrincipal';
 import firebase from '../firebase/firebaseConnection'
 
 export default function Cadastrar({navigation}) {
@@ -126,7 +125,7 @@ return(
      <TouchableOpacity style={styles.registerStyle}
      onPress={() =>Inserir()}>
 
-     <Text style={styles.registerText}> inserir </Text>
+     <Text style={styles.registerText}> Inserir </Text>
      
 
      </TouchableOpacity>

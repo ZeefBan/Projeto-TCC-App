@@ -36,7 +36,7 @@ export default function Login({navigation}){
     const Acessar = () => {
         navigation.reset({
             index: 0,
-            routes: [{name: "Principal"}]
+            routes: [{name: "Routes"}]
         })}
 
     

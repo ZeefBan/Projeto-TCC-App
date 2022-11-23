@@ -13,7 +13,7 @@ import ButtonNew from './Pages/ButtonNew';
 
 const Tab = createBottomTabNavigator();
 
-export default function Principal() {
+export default function Routes() {
   return (
     
 
