@@ -5,8 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Feed from './Pages/TelaFeed';
 import Perfil from './Pages/TelaPerfil';
-import Notifications from './Pages/TelaNotification';
-import Configs from './Pages/TelaConfig';
+import Reportar from './Pages/TelaNew';
+import ButtonNew from './Pages/ButtonNew';
 
 
 
@@ -43,31 +43,24 @@ export default function Principal() {
           ),
         }}
       />
+      
+      
       <Tab.Screen
+        name="Reportar"
+        component={Reportar}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({ focused, size }) => (
+             <ButtonNew size={size} focused={focused}/>
+          ),
+        }}
+      />
+
+       <Tab.Screen
         name="Perfil"
         component={Perfil}
         options={{
           tabBarLabel: 'Perfil',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Notifications"
-        component={Notifications}
-        options={{
-          tabBarLabel: 'Notificaçoes',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Configs"
-        component={Configs}
-        options={{
-          tabBarLabel: 'Config',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
