@@ -6,28 +6,46 @@ import { BottomNavigation } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Cadastro from './telaCadastro';
+import { getDatabase, ref, get, child } from "firebase/database";
 
 
 export default function Login({navigation}){
-    const [Email, setEmail] = useState(null)
+    const [cpf, setCpf] = useState(null)
     const [Senha, setSenha] = useState(null)
-    const Acessar = () => {
 
+    /*const dbRef = ref(getDatabase())
+
+
+    useEffect(() =>{
+    const Acessar = async () => {
+        get(child(dbRef, `Usuarios/${Cpf}`)).then((snapshot) => {
+            if(snapshot.exists()){
+                console.log("Usuario logado")
+            }else
+            console.log("Usuario nao existe")
+        }).catch((error) => {
+            console.log(error)
+        })
+        
+        const data = await (firebase.database().ref('Usuarios'))
+        
+            
+        }}, [])*/
+
+
+    const Acessar = () => {
         navigation.reset({
             index: 0,
-            routes: [{name: "Principal"},]
-        })
+            routes: [{name: "Principal"}]
+        })}
 
-    }
-    const Cadastro = () => {
+    
+    const TelaCadastro = () => {
  
         navigation.reset({
             index: 0,
-            routes: [{name: "Cadastro"}]
-        })
-
-        
-    }
+            routes: [{name: "Cadastrar"}]
+        })}
 
     const [offSet] = useState(new Animated.ValueXY({x: 0, y: 95}));
     const [opacity] = useState(new Animated.Value(0));
@@ -102,7 +120,7 @@ export default function Login({navigation}){
            </TouchableOpacity>
 
             <TouchableOpacity style={styles.registerStyle}
-            onPress={() =>Cadastro()}>
+            onPress={() =>TelaCadastro()}>
 
              <Text style={styles.registerText} > Criar conta Gratuita </Text>
 
