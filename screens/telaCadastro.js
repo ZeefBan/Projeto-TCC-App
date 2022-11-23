@@ -1,44 +1,44 @@
 import React, { useState, useEffect} from 'react';
 import { Alert } from 'react-native';
 import { Platform } from 'react-native';
-import { Button, CheckBox, Input, Image } from 'react-native-elements';
+import { Button, CheckBox, Input,TextInput, Image } from 'react-native-elements';
 import { StyleSheet, View, Text, KeyboardAvoidingView, TouchableOpacity, Animated } from 'react-native';
 import { color } from 'react-native-elements/dist/helpers';
 import { BottomNavigation } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import inserir from './telaPrincipal';
+import firebase from '../firebase/firebaseConnection'
+
+export default function Cadastrar({navigation}) {
+    const[email,setEmail] = useState("");
+    const[cpf,setCPF] = useState("");
+    const[nome,setNome] = useState("");
+    const[telefone,setTelefone] = useState("");
+    const[senha,setSenha]= useState("");
 
 
-export default function Cadastro({navigation}) {
-  const [Email, setEmail] = useState(null)
-  const [CPF, setCPF] = useState(null)
-  const [Nome, setNome] = useState(null)
-  const [Telefone, setTelefone] = useState(null)
-  const [Senha, setSenha] = useState(null)
- 
+    async function Inserir (){
 
-  const inserir = () => {
-
-    navigation.reset({
-      index: 0,
-      routes: [{name: "Principal"},]
-  })
+        const Usuarios = await firebase.database().ref('Usuarios');;
+        Usuarios.child(cpf).set({
+            Cpf: cpf,
+            Email: email,
+            Nome: nome,
+            Telefone: telefone,
+            Senha: senha
+          
+        })
 
 
   }
 
-
-
-
-  const voltar = () => {
+  const Voltar = () => {
 
     navigation.reset({
       index: 0,
       routes: [{name: "Login"}]
-  })
-
-  }
+  })}
 
   const [offSet] = useState(new Animated.ValueXY({x: 0, y: 95}));
     const [opacity] = useState(new Animated.Value(0));
@@ -90,26 +90,26 @@ return(
      <Input style={styles.inputStyle}
       placeholder="Email"
       autoCorrect={false}
-      onChangeText= {value => setEmail(value)}
+      onChangeText = {(texto)=> setEmail(texto)}
       keyboardType='email-address'
      />
      <Input style={styles.inputStyle}
-            placeholder="Nome"
-            onChangeText= {value => setNome(value)}
+            placeholder="Nome Completo"
+            onChangeText = {(texto)=> setNome(texto)}
             keyboardType='default'
             textContentType='name'
 
      />
      <Input style={styles.inputStyle}
             placeholder="CPF"
-            onChangeText= {value => setCPF(value)}
+            onChangeText = {(texto)=> setCPF(texto)}
             keyboardType='numbers-and-punctuation'
 
           
      />
      <Input style={styles.inputStyle}
             placeholder="Telefone"
-            onChangeText= {value => setTelefone(value)}
+            onChangeText = {(texto)=> setTelefone(texto)}
             keyboardType='numeric'  
             textContentType="telephoneNumber"        
      />
@@ -118,13 +118,13 @@ return(
       <Input style={styles.inputStyle}
       placeholder="Senha"
       autoCorrect={false}
-      onChangeText= {value => setSenha(value)}
+      onChangeText = {(texto)=> setSenha(texto)}
       secureTextEntry={true}
      />
 
 
      <TouchableOpacity style={styles.registerStyle}
-     onPress={() =>inserir()}>
+     onPress={() =>Inserir()}>
 
      <Text style={styles.registerText}> inserir </Text>
      
@@ -132,7 +132,7 @@ return(
      </TouchableOpacity>
 
       <TouchableOpacity style={styles.buttonStyle}
-      onPress={() =>voltar()}>
+      onPress={() =>Voltar()}>
 
        <Text style={styles.textStyle} > Voltar </Text>
 
